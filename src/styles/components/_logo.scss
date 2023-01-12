@@ -1,0 +1,66 @@
+// Color
+$brown: #2b2520;
+$green: #39dbc2;
+$pink: #f41fbf;
+$yellow: #ffed28;
+$purple: #b028ff;
+$blue: #49A7FF;
+$red: #ff3838;
+$orange: #db7953;
+$grey: #F2F4F4;
+
+// Font
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Molle:ital@1&display=swap');
+
+
+// Size
+$extra-large: 110px;
+$large: 84px;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+
+@mixin center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: $grey;
+}
+
+
+
+
+h1 {
+  font-size: $extra-large * 1.2;
+  font-weight: 900;
+  font-family: 'Catamaran', sans-serif;
+  text-transform: uppercase;
+  $dark-red: darken($red, 10%);
+  $stripe-size: 3%;
+  background:
+    -webkit-linear-gradient(270deg, $dark-red, $dark-red 50%, transparent 50%),
+    -webkit-repeating-linear-gradient(90deg,
+      transparent,
+      transparent $stripe-size,
+      white $stripe-size,
+      white $stripe-size * 2,
+    );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 6px 6px rgba(black, 0.4),
+}

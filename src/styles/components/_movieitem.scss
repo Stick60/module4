@@ -1,0 +1,29 @@
+.movie-item-cover {
+    height: 320px;
+    width: 220px;
+    border-radius: 20px;
+}
+
+.movie-item {
+    margin-bottom: 50px;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: capitalize;
+}
+
+.time {
+    font-style: italic;
+}
+
+.desc {
+    max-width: 400px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.titleliste {
+    max-width: 400px;
+    height: 35px;
+    text-align: center;
+}
