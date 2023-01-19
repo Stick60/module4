@@ -1,0 +1,26 @@
+.menu {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-size: larger;
+    margin-bottom: 40px;
+}
+
+.menuitem {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+a:link {
+    color: grey;
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}

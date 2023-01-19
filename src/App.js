@@ -5,6 +5,7 @@ import Inscription from "./pages/Inscription";
 import Connection from './pages/Connection';
 import Films from './pages/Films';
 import Film from './pages/Film';
+import Historique from './pages/Historique';
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
         <Route path="/connection" element={<Connection />} />
         <Route path="/films" element={<Films />} />
         <Route path="*" element={<Home />} />
-        <Route path="/film" element={<Film />} />
+        <Route path="/film/:id" element={<Film />} />
+        <Route path="/historique" element={<Historique />} />
       </Routes>
     </BrowserRouter>
   );

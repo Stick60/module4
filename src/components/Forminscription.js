@@ -1,16 +1,15 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const Forminscription = () => {
     const { register, formState: { errors } } = useForm();
-
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
-
         event.preventDefault();
         let data = new FormData(event.currentTarget);
-
         let userData = {
             email: data.get('email'),
             password: data.get('password')
@@ -19,13 +18,10 @@ const Forminscription = () => {
         axios.post(
             'https://stud.yoso.fr/api/users/', userData
         ).then(resp => {
-            console.log(resp)
+            navigate("/");
+            alert("compte créé avec succès");
         }).catch(error => { console.log(error) })
     }
-    console.log(' email ' - ' password '
-    )
-
-
 
     return (
         <div>

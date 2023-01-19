@@ -1,5 +1,5 @@
 import React from 'react';
-import DetailFilm from '../components/DetailFilm';
+import ListeHistorique from '../components/ListeHistorique';
 import Logo from '../components/Logo';
 import Menu from '../components/Menu';
 
@@ -7,14 +7,14 @@ const divstyle = {
     textAlign: "center"
 }
 
-const Film = () => {
+const Historique = () => {
     return (
         <div style={divstyle}>
             <Logo />
             <Menu />
-            <DetailFilm />
+            <ListeHistorique />
         </div>
     );
 };
 
-export default Film;
+export default Historique;

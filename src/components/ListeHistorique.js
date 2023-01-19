@@ -1,45 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MovieItem from './MovieItem';
-
+import HistoItem from './HistoItem';
 
 const jwtoken = localStorage.getItem('access');
 const paramRequest = {
     headers: {
         Authorization: "Bearer " + jwtoken
     }
-}
-const Listefilm = () => {
+};
+
+const ListeHistorique = () => {
+    const idUser = localStorage.getItem('iduser');
     const [films, setFilms] = useState([])
     useEffect(() => {
         let isMounted = false;
         if (!isMounted)
             axios.get(
-                'https://stud.yoso.fr/api/movies/', paramRequest
+                `https://stud.yoso.fr/api/users/${idUser}/loans`, paramRequest
             ).then(resp => {
                 setFilms(resp.data);
             })
         return () => isMounted = true;
     }, [])
 
-
     return (
         <div>
-            <ul className='movie-list'>
-                {films.map(({ id, image, title }) => (
-                    <MovieItem
+            <h3>Votre historique de location :</h3>
+            <ul>
+                {films.map(({ id, movie, loanAt }) => (
+                    <HistoItem
                         key={id}
-                        id={id}
-                        image={image}
-                        title={title}
+                        movie={movie}
+                        loanAt={loanAt}
                     />
                 ))}
             </ul>
         </div>
-
-
-
-    );
+    )
 };
-
-export default Listefilm;
+export default ListeHistorique;

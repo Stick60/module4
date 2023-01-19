@@ -1,25 +1,44 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
+
 
 
 const jwtoken = localStorage.getItem('access');
-const idFilm = localStorage.getItem('id');
 const paramRequest = {
     headers: {
         Authorization: "Bearer " + jwtoken
     }
-}
+};
 
 const DetailFilm = () => {
+    const { id } = useParams();
     const [films, setFilms] = useState([])
     useEffect(() => {
-        axios.get(
-            'https://stud.yoso.fr/api/movies/' + idFilm, paramRequest
+        let isMounted = false;
+        if (!isMounted)
+            axios.get(
+                `https://stud.yoso.fr/api/movies/${id}`, paramRequest
+            ).then(resp => {
+                setFilms(resp.data);
+            })
+        return () => isMounted = true;
+    }, [id])
+
+    const locationFilm = (event) => {
+        event.preventDefault();
+        let login = localStorage.getItem('login');
+        let infoLocation = {
+            loanBy: login,
+            movie: films.title
+        }
+        axios.post(
+            'https://stud.yoso.fr/api/loans/', infoLocation
         ).then(resp => {
-            setFilms(resp.data);
-            console.log(films)
-        })
-    })
+            alert("Vous venez de louer " + films.title);
+        }).catch(error => { console.warning(error.status) })
+
+    }
 
     return (
         <div className='conteneur'>
@@ -34,7 +53,7 @@ const DetailFilm = () => {
             <div >
                 <form  >
                     <input type="hidden" />
-                    <button type="submit" className="button-82-pushable"
+                    <button onClick={locationFilm} className="button-82-pushable"
                     >
                         <span className="button-82-shadow"></span>
                         <span className="button-82-edge"></span>
